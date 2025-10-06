@@ -3,129 +3,360 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Neue Perspektiven</title>
+    <title>Es gibt einen Weg</title>
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
       body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        max-width: 800px;
-        margin: 0 auto;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        line-height: 1.7;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
         padding: 20px;
-        background-color: #f5f5f5;
       }
+      
       .container {
+        max-width: 900px;
+        margin: 0 auto;
         background-color: white;
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
       }
-      h1,
+      
+      .hero {
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        color: white;
+        padding: 60px 40px;
+        text-align: center;
+      }
+      
+      .hero h1 {
+        font-size: 2.8em;
+        margin-bottom: 20px;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      
+      .hero-subtitle {
+        font-size: 1.3em;
+        opacity: 0.95;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      
+      .content {
+        padding: 50px 40px;
+      }
+      
+      .highlight-box {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+        padding: 30px;
+        border-radius: 10px;
+        margin: 30px 0;
+        font-size: 1.2em;
+        line-height: 1.8;
+        text-align: center;
+        font-weight: 500;
+        box-shadow: 0 4px 15px rgba(245, 87, 108, 0.3);
+      }
+      
+      .video-section {
+        margin: 40px 0;
+        padding: 30px;
+        background: #f8f9fa;
+        border-radius: 10px;
+      }
+      
+      .video-section h2 {
+        color: #2c3e50;
+        margin-bottom: 15px;
+        font-size: 1.8em;
+      }
+      
+      .video-description {
+        color: #555;
+        margin-bottom: 20px;
+        line-height: 1.7;
+      }
+      
+      .video-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      
+      .video-placeholder {
+        background: #ddd;
+        padding: 100px 20px;
+        text-align: center;
+        border-radius: 8px;
+        color: #666;
+      }
+      
       h2 {
         color: #2c3e50;
+        margin: 40px 0 20px 0;
+        font-size: 1.8em;
+        border-left: 5px solid #667eea;
+        padding-left: 15px;
       }
-      .resource-box {
-        border-left: 4px solid #3498db;
-        padding: 15px;
-        margin: 20px 0;
-        background-color: #f8f9fa;
+      
+      .cta-box {
+        background: #667eea;
+        color: white;
+        padding: 40px;
+        border-radius: 10px;
+        margin: 40px 0;
+        text-align: center;
       }
-      .quote {
-        font-style: italic;
-        color: #34495e;
-        border-left: 3px solid #95a5a6;
-        padding-left: 20px;
-        margin: 20px 0;
+      
+      .cta-box h3 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
       }
+      
+      .cta-box p {
+        font-size: 1.1em;
+        margin-bottom: 25px;
+        opacity: 0.95;
+      }
+      
       .button {
         display: inline-block;
-        padding: 10px 20px;
-        background-color: #3498db;
-        color: white;
+        padding: 15px 35px;
+        background-color: white;
+        color: #667eea;
         text-decoration: none;
-        border-radius: 4px;
-        margin: 10px 0;
+        border-radius: 30px;
+        margin: 10px;
+        font-weight: 600;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       }
+      
       .button:hover {
-        background-color: #2980b9;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+      
+      .resources {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 30px 0;
+      }
+      
+      .resource-card {
+        background: white;
+        border: 2px solid #e0e0e0;
+        padding: 25px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+      
+      .resource-card:hover {
+        border-color: #667eea;
+        box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+        transform: translateY(-3px);
+      }
+      
+      .resource-card h3 {
+        color: #2c3e50;
+        margin-bottom: 15px;
+        font-size: 1.3em;
+      }
+      
+      .resource-card ul {
+        list-style: none;
+      }
+      
+      .resource-card li {
+        margin: 12px 0;
+      }
+      
+      .resource-card a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+      
+      .resource-card a:hover {
+        color: #764ba2;
+        text-decoration: underline;
+      }
+      
+      .quote {
+        font-style: italic;
+        color: #555;
+        border-left: 4px solid #667eea;
+        padding-left: 25px;
+        margin: 30px 0;
+        font-size: 1.15em;
+      }
+      
+      .footer {
+        background: #f8f9fa;
+        padding: 30px 40px;
+        text-align: center;
+        color: #666;
+        font-size: 0.95em;
+        border-top: 1px solid #e0e0e0;
+      }
+      
+      @media (max-width: 768px) {
+        .hero {
+          padding: 40px 25px;
+        }
+        
+        .hero h1 {
+          font-size: 2em;
+        }
+        
+        .hero-subtitle {
+          font-size: 1.1em;
+        }
+        
+        .content {
+          padding: 30px 25px;
+        }
+        
+        .video-section {
+          padding: 20px;
+        }
+        
+        .cta-box {
+          padding: 30px 20px;
+        }
+        
+        .button {
+          display: block;
+          margin: 10px 0;
+        }
+        
+        .resources {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>Neue Perspektiven entdecken</h1>
-
-      <div class="quote">
-        "Der beste Weg, die Zukunft vorherzusagen, ist sie zu gestalten." -
-        Peter Drucker
-      </div>
-
-      <p>
-        Jeder Mensch verdient es, sein volles Potenzial zu entfalten und ein
-        erfülltes Leben zu führen. Manchmal finden wir uns in Gedankenmustern
-        und Gruppierungen wieder, die uns mehr einschränken als stärken.
-      </p>
-
-      <h2>Warum diese Seite?</h2>
-      <p>
-        Diese Seite bietet Ihnen einen geschützten Raum, um neue Perspektiven zu
-        entdecken und sich mit Alternativen zu extremistischem Gedankengut
-        auseinanderzusetzen. Hier finden Sie Informationen, Unterstützung und
-        Geschichten von Menschen, die ähnliche Wege gegangen sind.
-      </p>
-
-      <h2>Hilfreiche Ressourcen</h2>
-
-      <div class="resource-box">
-        <h3>Ausstiegsperspektiven</h3>
-        <ul>
-          <li>
-            <a href="https://www.bazonline.ch/der-neonazi-der-zum-aussteiger-wurde-306468440391">
-              Der Neonazi, der zum Aussteiger wurde
-            </a>
-          </li>
-          <li>
-            <a href="https://www.bpb.de/themen/rechtsextremismus/546159/ein-weg-aus-dem-rechtsextremismus/">
-              Ein Weg aus dem Rechtsextremismus
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="resource-box">
-        <h3>Gemeinschaft und Dialog</h3>
-        <p>
-          Organisationen, die sich für gesellschaftlichen Zusammenhalt einsetzen:
+      <div class="hero">
+        <h1>Es gibt einen Weg</h1>
+        <p class="hero-subtitle">
+          Veränderung ist möglich. Du bist nicht allein.
         </p>
-        <ul>
-          <li>
-            <a href="https://www.gra.ch">
-              GRA Stiftung gegen Rassismus & Antisemitismus
-            </a>
-          </li>
-          <li>
-            <a href="https://www.humanrights.ch/de/">
-              humanrights.ch
-            </a>
-          </li>
-        </ul>
       </div>
 
-      <h2>Der erste Schritt</h2>
-      <p>
-        Veränderung beginnt mit kleinen Schritten. Sie sind nicht allein auf
-        diesem Weg. Es gibt Menschen und Organisationen, die Ihnen zuhören und
-        Sie unterstützen - vertraulich und ohne Vorurteile.
-      </p>
+      <div class="content">
+        <div class="highlight-box">
+          Jeder Mensch hat das Recht, sein Leben neu zu gestalten – 
+          unabhängig von der Vergangenheit.
+        </div>
 
-      <div class="quote">
-        "Jeder Mensch hat das Recht und die Fähigkeit, sein Leben neu zu
-        gestalten."
+        <div class="video-section">
+          <h2>Ein Aussteiger berichtet</h2>
+          <p class="video-description">
+            Christian Ernst Weissgerber war jahrelang in der rechtsextremen Szene aktiv. 
+            In der Serie "AUSSTIEG – (K)EIN WEG ZURÜCK" berichtet er offen über seine 
+            Erfahrungen, seine Radikalisierung und seinen Weg heraus.
+          </p>
+          <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/0tr66njAIZY?si=yB-PRaN1Ib4jaSNQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <p style="margin-top: 15px; font-size: 0.9em; color: #666;">
+            Ein Projekt von EXIT-Deutschland und Timbox TV
+          </p>
+        </div>
+
+        <div class="cta-box">
+          <h3>Brauchst du Unterstützung?</h3>
+          <p>
+            Es gibt Organisationen, die dir vertraulich und ohne Vorurteile helfen können.
+          </p>
+          <a href="https://www.exit-deutschland.de" class="button" target="_blank">
+            EXIT-Deutschland
+          </a>
+          <a href="https://www.gra.ch" class="button" target="_blank">
+            GRA Schweiz
+          </a>
+        </div>
+
+        <h2>Mehr Informationen</h2>
+        
+        <div class="resources">
+          <div class="resource-card">
+            <h3>Ausstiegsgeschichten</h3>
+            <ul>
+              <li>
+                <a href="https://www.bazonline.ch/der-neonazi-der-zum-aussteiger-wurde-306468440391" target="_blank">
+                  Der Neonazi, der zum Aussteiger wurde
+                </a>
+              </li>
+              <li>
+                <a href="https://www.bpb.de/themen/rechtsextremismus/546159/ein-weg-aus-dem-rechtsextremismus/" target="_blank">
+                  Ein Weg aus dem Rechtsextremismus
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="resource-card">
+            <h3>Beratungsstellen</h3>
+            <ul>
+              <li>
+                <a href="https://www.exit-deutschland.de" target="_blank">
+                  EXIT-Deutschland
+                </a>
+              </li>
+              <li>
+                <a href="https://www.gra.ch" target="_blank">
+                  GRA Stiftung gegen Rassismus
+                </a>
+              </li>
+              <li>
+                <a href="https://www.humanrights.ch/de/" target="_blank">
+                  humanrights.ch
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="quote">
+          "Der beste Weg, die Zukunft vorherzusagen, ist sie zu gestalten."
+        </div>
+
+        <p style="margin-top: 40px; line-height: 1.8; color: #555;">
+          Veränderung beginnt mit kleinen Schritten. Du bist nicht allein auf diesem Weg. 
+          Es gibt Menschen und Organisationen, die dir zuhören und dich unterstützen – 
+          vertraulich und ohne Vorurteile.
+        </p>
       </div>
 
-      <p style="margin-top: 40px; font-size: 0.9em; color: #666">
-        Diese Seite wird von Menschen betrieben, die sich für eine offene und
-        friedliche Gesellschaft einsetzen.
-      </p>
+      <div class="footer">
+        Diese Seite wird von Menschen betrieben, die sich für eine offene 
+        und friedliche Gesellschaft einsetzen.
+      </div>
     </div>
   </body>
 </html>
