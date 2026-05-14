@@ -1,3 +1,6 @@
+allowBuilds:
+  protobufjs: true
+  re2: true
 onlyBuiltDependencies:
   - protobufjs
   - re2
